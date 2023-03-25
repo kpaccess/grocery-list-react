@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { FaTrashAlt } from "react-icons/fa";
+import React, { useState } from 'react';
+import { FaTrashAlt } from 'react-icons/fa';
 
 const Content = () => {
   // const [searchText, setSearchText] = useState("");
@@ -7,28 +7,46 @@ const Content = () => {
     {
       id: 1,
       checked: true,
-      item: "One half pound bag of Cocoa Covered",
+      item: 'One half pound bag of Cocoa Covered',
     },
     {
       id: 2,
       checked: false,
-      item: "Item 2",
+      item: 'Item 2',
     },
     {
       id: 3,
       checked: false,
-      item: "Item 3",
+      item: 'Item 3',
     },
   ]);
+
+  const handleCheck = (id) => {
+    const listItems = items.map((item) =>
+      item.id === id
+        ? { ...item, checked: !item.checked }
+        : item
+    );
+    setItems(listItems);
+  };
 
   return (
     <main>
       <ul>
         {items.map((item) => (
           <li className="item" key={item.id}>
-            <input type="checkbox" checked={item.checked} />
+            <input
+              type="checkbox"
+              checked={item.checked}
+              onChange={(id) =>
+                handleCheck(item.id)
+              }
+            />
             <label>{item.item}</label>
-            <FaTrashAlt role="button" tabIndex="0" />
+            <FaTrashAlt
+              role="button"
+              tabIndex="0"
+            />
           </li>
         ))}
       </ul>
