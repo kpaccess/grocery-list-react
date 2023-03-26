@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from './Header';
 import Content from './Content';
 import Footer from './Footer';
@@ -14,13 +14,21 @@ function App() {
   const [newItem, setNewItem] = useState('');
   const [search, setSearch] = useState('');
 
-  const reuseLocalStorage = (item) => {
-    setItems(item);
+  useEffect(() => {
+    // save items whenever new items are added
     localStorage.setItem(
       'shoppinglist',
-      JSON.stringify(item)
+      JSON.stringify(items)
     );
-  };
+  }, [items]);
+
+  // const reuseLocalStorage = (item) => {
+  //   setItems(item);
+  //   localStorage.setItem(
+  //     'shoppinglist',
+  //     JSON.stringify(item)
+  //   );
+  // };
 
   const addItem = (item) => {
     const id = items.length
@@ -32,7 +40,7 @@ function App() {
       item,
     };
     const listItems = [...items, myNewItem];
-    reuseLocalStorage(listItems);
+    setItems(listItems);
   };
 
   const handleCheck = (id) => {
@@ -41,14 +49,14 @@ function App() {
         ? { ...item, checked: !item.checked }
         : item
     );
-    reuseLocalStorage(listItems);
+    setItems(listItems);
   };
 
   const handleDelete = (id) => {
     const listItems = items.filter(
       (item) => item.id !== id
     );
-    reuseLocalStorage(listItems);
+    setItems(listItems);
   };
 
   const handleSubmit = (e) => {
