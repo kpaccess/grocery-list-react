@@ -47,6 +47,10 @@ function App() {
       (item) => item.id !== id
     );
     setItems(listItems);
+    localStorage.setItem(
+      'shoppinglist',
+      JSON.stringify(listItems)
+    );
   };
 
   const handleSubmit = (e) => {

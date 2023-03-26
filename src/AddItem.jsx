@@ -19,6 +19,7 @@ const Input = ({
         onChange={(e) =>
           setNewItem(e.target.value)
         }
+        placeholder="Add Item"
         required
         autoFocus
       />
