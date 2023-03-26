@@ -38,7 +38,7 @@ main {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   overflow-y: auto;
 }
@@ -60,7 +60,7 @@ ul {
 }
 /* zero width */
 ul li::before {
-  content: "\200B";
+  content: '\200B';
 }
 
 .item {
@@ -72,7 +72,7 @@ ul li::before {
   background: #eee;
 }
 
-.item input[type="checkbox"] {
+.item input[type='checkbox'] {
   text-align: center;
   width: 2.5rem;
   width: 48px;
@@ -84,7 +84,7 @@ ul li::before {
   margin-right: 0.5rem;
 }
 
-.item input[type="checkbox"]:focus + label {
+.item input[type='checkbox']:focus + label {
   text-decoration: underline;
 }
 
