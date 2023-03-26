@@ -118,7 +118,7 @@ ul li::before {
 
 .addForm label {
   position: absolute;
-  left: -99999999;
+  left: -99999999px;
 }
 
 .addForm input[type='text'] {
