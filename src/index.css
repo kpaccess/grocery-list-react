@@ -150,3 +150,25 @@ button:hover {
   background: lightgreen;
   outline: none;
 }
+
+.searchForm {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  margin: 0.25rem 0 0;
+  padding: 0 0.5rem 0.25rem;
+  border-bottom: 1px solid #eee;
+}
+
+.searchForm label {
+  position: absolute;
+  left: -9999999px;
+}
+
+.searchForm input[type='search'] {
+  flex-grow: 1;
+  height: 48px;
+  max-width: 100%;
+  font-size: 1rem;
+  padding: 0.25rem;
+}
