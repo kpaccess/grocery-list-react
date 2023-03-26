@@ -12,6 +12,14 @@ function App() {
   );
   const [newItem, setNewItem] = useState('');
 
+  const reuseLocalStorage = (item) => {
+    setItems(item);
+    localStorage.setItem(
+      'shoppinglist',
+      JSON.stringify(item)
+    );
+  };
+
   const addItem = (item) => {
     const id = items.length
       ? items[items.length - 1].id + 1
@@ -22,11 +30,7 @@ function App() {
       item,
     };
     const listItems = [...items, myNewItem];
-    setItems(listItems);
-    localStorage.setItem(
-      'shoppinglist',
-      JSON.stringify(listItems)
-    );
+    reuseLocalStorage(listItems);
   };
 
   const handleCheck = (id) => {
@@ -35,22 +39,14 @@ function App() {
         ? { ...item, checked: !item.checked }
         : item
     );
-    setItems(listItems);
-    localStorage.setItem(
-      'shoppinglist',
-      JSON.stringify(listItems)
-    );
+    reuseLocalStorage(listItems);
   };
 
   const handleDelete = (id) => {
     const listItems = items.filter(
       (item) => item.id !== id
     );
-    setItems(listItems);
-    localStorage.setItem(
-      'shoppinglist',
-      JSON.stringify(listItems)
-    );
+    reuseLocalStorage(listItems);
   };
 
   const handleSubmit = (e) => {
